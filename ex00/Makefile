@@ -1,8 +1,8 @@
 NAME		:= megaphone
 
-CC			:= clang++
+CXX			:= clang++
 
-CFLAGS		:= -Wall -Wextra -Werror -MMD -MP -std=c++98
+CXXFLAGS		:= -Wall -Wextra -Werror -MMD -MP -std=c++98
 
 SRCSDIR		:= srcs/
 
