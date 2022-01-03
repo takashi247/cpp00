@@ -4,7 +4,6 @@
 int
 	main(int ac, char **av)
 {
-	std::locale	loc;
 	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
