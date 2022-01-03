@@ -1,0 +1,46 @@
+NAME		:= megaphone
+
+CC			:= clang++
+
+CFLAGS		:= -Wall -Wextra -Werror -MMD -MP -std=c++98
+
+SRCSDIR		:= srcs/
+
+OBJSDIR		:= objs/
+
+SRCS		:= megaphone.cpp
+
+OBJS		:= $(addprefix $(OBJSDIR), $(SRCS:.cpp=.o))
+
+SRCS		:= $(addprefix $(SRCSDIR), $(SRCS))
+
+VPATH		:= $(SRCSDIR)
+
+INCLUDE		:= -I./include
+
+RM			:= rm -rf
+
+DEBUG		:= -g
+
+all:		$(NAME)
+
+$(NAME):	$(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ -o $@
+
+$(OBJSDIR)%.o: %.cpp
+	@if [ ! -d $(OBJSDIR) ]; then mkdir $(OBJSDIR); fi
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+clean:
+	$(RM) $(OBJSDIR)
+	$(RM) *.dSYM
+
+fclean:		clean
+	$(RM) $(NAME)
+
+re:			fclean all
+
+debug:		CFLAGS += $(DEBUG)
+debug:		re
+
+.PHONY:		all clean fclean re debug
