@@ -14,7 +14,7 @@ int
 		for (int i = 0; i < ac; i++)
 		{
 			std::string s = av[i];
-			for (int j = 0; j < (int)s.length(); j++)
+			for (size_t j = 0; j < s.length(); j++)
 				s[j] = std::toupper(s[j]);
 			std::cout << s;
 		}
