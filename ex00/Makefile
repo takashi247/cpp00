@@ -25,11 +25,11 @@ DEBUG		:= -g
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $^ -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $^ -o $@
 
 $(OBJSDIR)%.o: %.cpp
 	@if [ ! -d $(OBJSDIR) ]; then mkdir $(OBJSDIR); fi
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	$(RM) $(OBJSDIR)
@@ -40,7 +40,7 @@ fclean:		clean
 
 re:			fclean all
 
-debug:		CFLAGS += $(DEBUG)
+debug:		CXXFLAGS += $(DEBUG)
 debug:		re
 
 .PHONY:		all clean fclean re debug
