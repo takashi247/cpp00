@@ -1,6 +1,7 @@
 #include "phonebook.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 Phonebook::Phonebook(): num_of_contacts(0), index(0){}
 
@@ -41,7 +42,58 @@ void
 }
 
 void
+	print_with_width(std::string str)
+{
+	std::cout << std::setw(10);
+	if (str.length() <= 10)
+		std::cout << str;
+	else
+	{
+		std::string	cpy = str.substr(0, 9);
+		cpy += ".";
+		std::cout << cpy;
+	}
+}
+
+void
+	print_column_names(void)
+{
+	std::cout << "|";
+	print_with_width("index");
+	std::cout << "|";
+	print_with_width("first name");
+	std::cout << "|";
+	print_with_width("last name");
+	std::cout << "|";
+	print_with_width("nickname");
+	std::cout << "|" << std::endl;
+}
+
+void
+	print_contact(int i, Contact contact)
+{
+	std::cout << "|";
+	std::cout << std::setw(10);
+	std::cout << i;
+	std::cout << "|";
+	print_with_width(contact.get_first_name());
+	std::cout << "|";
+	print_with_width(contact.get_last_name());
+	std::cout << "|";
+	print_with_width(contact.get_nickname());
+	std::cout << "|" << std::endl;
+}
+
+void
 	Phonebook::search_contact(void)
 {
+	if (this->num_of_contacts == 0)
+		std::cout << "No contacts are registered. Please ADD contacts first." << std::endl;
+	else
+	{
+		print_column_names();
+		for (int i = 0; i < this->num_of_contacts; i++)
+			print_contact(i, this->constact_list[i]);
+	}
 	return ;
 }
