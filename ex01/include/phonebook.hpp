@@ -9,12 +9,18 @@ class Phonebook
 		int		num_of_contacts;
 		int		index;
 		Contact	contact_list[8];
+		void	print_with_width(std::string str);
+		void	print_column_names();
+		void	print_contact(int i, Contact contact);
+		int		get_index_input();
+		void	print_all_info(Contact contact);
+		void	get_string_input(std::string &str);
 	public:
 		Phonebook();
 		~Phonebook();
-		void	add_contact(void);
-		void	search_contact(void);
-		void	launch_app(void);
+		void	add_contact();
+		void	search_contact();
+		void	launch_app();
 };
 
 #endif
