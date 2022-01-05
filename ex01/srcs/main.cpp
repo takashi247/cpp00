@@ -1,10 +1,8 @@
 #include "phonebook.hpp"
 
 int
-	main(void)
+	main()
 {
 	Phonebook	Phonebook;
-
 	Phonebook.launch_app();
-	return (0);
 }
