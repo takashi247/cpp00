@@ -17,9 +17,11 @@ Phonebook::~Phonebook()
 void
 	Phonebook::get_string_input(std::string &str)
 {
-	if(!std::getline(std::cin, str))
+	std::getline(std::cin, str);
+	if (!std::cin.good())
 	{
-		std::cout << "\nInvalid input. Terminate the app.\n" << std::endl;
+		std::cin.clear();
+		std::cout << "\n\nInvalid input. Terminate the app.\n" << std::endl;
 		std::exit(1);
 	}
 }
@@ -29,9 +31,7 @@ void
 {
 	if (this->index == 8)
 		this->index = 0;
-	std::cout << std::endl;
-	std::cout << "Please input a new contact's information." << std::endl;
-	std::cout << std::endl;
+	std::cout << "\nPlease input a new contact's information.\n" << std::endl;
 	std::cout << "What is his/her first name?: ";
 	std::string	first_name;
 	Phonebook::get_string_input(first_name);
@@ -75,8 +75,7 @@ void
 void
 	Phonebook::print_column_names()
 {
-	std::cout << std::endl;
-	std::cout << "|";
+	std::cout << "\n|";
 	Phonebook::print_with_width("index");
 	std::cout << "|";
 	Phonebook::print_with_width("first name");
@@ -136,11 +135,7 @@ void
 			Phonebook::print_contact(i, this->contact_list[i]);
 		int	index = Phonebook::get_index_input();
 		if (index <= 0 || this->num_of_contacts < index)
-		{
-			std::cout << std::endl;
-			std::cout << "ERROR: Invalid index. Try again." << std::endl;
-			std::cout << std::endl;
-		}
+			std::cout << "\nERROR: Invalid index. Try again.\n" << std::endl;
 		else
 			Phonebook::print_all_info(this->contact_list[index - 1]);
 	}
