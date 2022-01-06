@@ -51,6 +51,10 @@ Account::~Account()
     Account::_displayTimestamp();
     std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount \
     << ";closed" << std::endl;
+    Account::_nbAccounts--;
+    Account::_totalAmount -= this->_amount;
+    Account::_totalNbDeposits -= this->_nbDeposits;
+    Account::_totalNbWithdrawals -= this->_nbWithdrawals;
 }
 
 int
