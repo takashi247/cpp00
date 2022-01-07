@@ -4,7 +4,11 @@
 #include <iomanip>
 #include <sstream>
 
-Phonebook::Phonebook(): num_of_contacts(0), index(0)
+const int	MAX_NUM_OF_CONTACT = 8;
+const int	WIDTH_OF_COLUMN = 10;
+
+Phonebook::Phonebook():
+	num_of_contacts(0), index(0)
 {
 	std::cout << "\nWelcome to My Awesome PhoneBook!\n" << std::endl;
 }
@@ -29,7 +33,7 @@ void
 void
 	Phonebook::add_contact()
 {
-	if (this->index == 8)
+	if (this->index == MAX_NUM_OF_CONTACT)
 		this->index = 0;
 	std::cout << "\nPlease input a new contact's information.\n" << std::endl;
 	std::cout << "What is his/her first name?: ";
@@ -53,7 +57,7 @@ void
 	Phonebook::get_string_input(darkest_secret);
 	this->contact_list[this->index].set_darkest_secret(darkest_secret);
 	std::cout << std::endl;
-	if (this->num_of_contacts < 8)
+	if (this->num_of_contacts < MAX_NUM_OF_CONTACT)
 		this->num_of_contacts++;
 	this->index++;
 }
@@ -61,12 +65,12 @@ void
 void
 	Phonebook::print_with_width(std::string str)
 {
-	std::cout << std::setw(10);
-	if (str.length() <= 10)
+	std::cout << std::setw(WIDTH_OF_COLUMN);
+	if (str.length() <= WIDTH_OF_COLUMN)
 		std::cout << str;
 	else
 	{
-		std::string	cpy = str.substr(0, 9);
+		std::string	cpy = str.substr(0, WIDTH_OF_COLUMN - 1);
 		cpy += ".";
 		std::cout << cpy;
 	}
@@ -90,7 +94,7 @@ void
 	Phonebook::print_contact(int i, Contact contact)
 {
 	std::cout << "|";
-	std::cout << std::setw(10);
+	std::cout << std::setw(WIDTH_OF_COLUMN);
 	std::cout << i + 1;
 	std::cout << "|";
 	Phonebook::print_with_width(contact.get_first_name());

@@ -23,10 +23,8 @@ void
     std::cout << "] ";
 }
 
-Account::Account(): _accountIndex(Account::_nbAccounts),
-    _amount(0),
-    _nbDeposits(0),
-    _nbWithdrawals(0)
+Account::Account():
+    _accountIndex(Account::_nbAccounts), _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
     Account::_nbAccounts++;
     Account::_displayTimestamp();
@@ -34,10 +32,8 @@ Account::Account(): _accountIndex(Account::_nbAccounts),
     << ";created" << std::endl;
 }
 
-Account::Account(int initial_deposit): _accountIndex(Account::_nbAccounts),
-    _amount(initial_deposit),
-    _nbDeposits(0),
-    _nbWithdrawals(0)
+Account::Account(int initial_deposit):
+    _accountIndex(Account::_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
     Account::_nbAccounts++;
     Account::_totalAmount += initial_deposit;

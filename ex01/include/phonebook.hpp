@@ -3,6 +3,9 @@
 
 # include "contact.hpp"
 
+extern const int	MAX_NUM_OF_CONTACT;
+extern const int	WIDTH_OF_COLUMN;
+
 class Phonebook
 {
 	public:
