@@ -5,6 +5,12 @@
 
 class Phonebook
 {
+	public:
+		Phonebook();
+		~Phonebook();
+		void	add_contact();
+		void	search_contact();
+		void	launch_app();
 	private:
 		int		num_of_contacts;
 		int		index;
@@ -15,12 +21,6 @@ class Phonebook
 		int		get_index_input();
 		void	print_all_info(Contact contact);
 		void	get_string_input(std::string &str);
-	public:
-		Phonebook();
-		~Phonebook();
-		void	add_contact();
-		void	search_contact();
-		void	launch_app();
 };
 
 #endif
