@@ -13,6 +13,8 @@ SRCS		:= Account.cpp \
 
 OBJS		:= $(addprefix $(OBJSDIR), $(SRCS:.cpp=.o))
 
+DEPS		:= $(OBJS:.o=.d)
+
 SRCS		:= $(addprefix $(SRCSDIR), $(SRCS))
 
 VPATH		:= $(SRCSDIR)
@@ -43,5 +45,7 @@ re:			fclean all
 
 debug:		CXXFLAGS += $(DEBUG)
 debug:		re
+
+-include $(DEPS)
 
 .PHONY:		all clean fclean re debug
