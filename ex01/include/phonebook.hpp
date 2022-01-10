@@ -11,13 +11,13 @@ class Phonebook
 	public:
 		Phonebook();
 		~Phonebook();
-		void	add_contact();
-		void	search_contact();
 		void	launch_app();
 	private:
 		int		num_of_contacts;
 		int		index;
 		Contact	contact_list[8];
+		void	add_contact();
+		void	search_contact();
 		void	print_with_width(std::string str);
 		void	print_column_names();
 		void	print_contact(int i, Contact contact);
